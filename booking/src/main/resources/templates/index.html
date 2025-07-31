@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Booking Home</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<h1>Welcome</h1>
+<div>
+    <a href="/api/accommodations" target="_blank">View Accommodations (JSON)</a>
+</div>
+<div>
+    <form th:action="@{/api/bookings}" method="post">
+        <label>Accommodation Id: <input type="number" name="accommodationId" /></label><br/>
+        <label>Check In: <input type="date" name="checkIn" /></label><br/>
+        <label>Check Out: <input type="date" name="checkOut" /></label><br/>
+        <button type="submit">Book</button>
+    </form>
+</div>
+<div>
+    <a href="/api/bookings" target="_blank">My Bookings (JSON)</a>
+</div>
+<div>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">Logout</button>
+    </form>
+</div>
+</body>
+</html>
