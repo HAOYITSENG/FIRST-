@@ -1,0 +1,14 @@
+# IntelliJ 專用
+.idea/
+*.iml
+
+# H2 本地資料庫檔案
+/data/
+*.mv.db
+*.h2.db
+
+# 系統或暫存
+*.log
+*.class
+booking/target/
+out/

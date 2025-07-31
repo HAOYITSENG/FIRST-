@@ -1,9 +1,0 @@
-# Java + Maven + IntelliJ
-/target
-/.idea
-*.iml
-*.log
-*.class
-/data/testdb.mv.db
-/data/testdb.trace.db
-/.DS_Store
