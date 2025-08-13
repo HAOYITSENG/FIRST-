@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.booking.model.Booking;
 import com.example.booking.service.BookingService;
 
+
 @RestController
 @RequestMapping("/api/bookings")
 public class BookingController {
@@ -33,7 +34,12 @@ public class BookingController {
                           @RequestParam("checkIn") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate checkIn,
                           @RequestParam("checkOut") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate checkOut,
                           Authentication auth) {
+
+        // 新增：檢查日期是否合理
+        if (checkIn.isAfter(checkOut)) {
+            throw new IllegalArgumentException("入住日期不能晚於退房日期");
+        }
+
         return bookingService.book(accommodationId, checkIn, checkOut);
     }
-
 }

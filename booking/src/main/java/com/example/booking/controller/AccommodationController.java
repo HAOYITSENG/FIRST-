@@ -3,6 +3,7 @@ package com.example.booking.controller;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,5 +23,14 @@ public class AccommodationController {
     @GetMapping
     public List<Accommodation> list() {
         return bookingService.getAllAccommodations();
+    }
+
+    @GetMapping("/{id}")
+    public Accommodation getById(@PathVariable Long id) {
+        return bookingService.getAllAccommodations()
+                .stream()
+                .filter(acc -> acc.getId().equals(id))
+                .findFirst()
+                .orElse(null);
     }
 }
