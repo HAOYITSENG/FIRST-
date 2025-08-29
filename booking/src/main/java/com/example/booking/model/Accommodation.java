@@ -1,6 +1,7 @@
 package com.example.booking.model;
 
 import jakarta.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "accommodations")
@@ -13,15 +14,22 @@ public class Accommodation {
     private String location;
     private String description;
 
+    // 新增價格欄位
+    @Column(name = "price_per_night", nullable = false, precision = 10, scale = 2)
+    private BigDecimal pricePerNight = BigDecimal.valueOf(1000); // 預設1000元
+
+
     public Accommodation() {}
 
-    public Accommodation(Long id, String name, String location, String description) {
+    public Accommodation(Long id, String name, String location, String description, BigDecimal pricePerNight) {
         this.id = id;
         this.name = name;
         this.location = location;
         this.description = description;
+        this.pricePerNight = pricePerNight;
     }
 
+    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -53,4 +61,10 @@ public class Accommodation {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    // 新增價格的 getter/setter
+    public BigDecimal getPricePerNight() { return pricePerNight; }
+    public void setPricePerNight(BigDecimal pricePerNight) { this.pricePerNight = pricePerNight; }
+
+
 }
